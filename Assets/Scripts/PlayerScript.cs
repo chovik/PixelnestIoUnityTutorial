@@ -7,10 +7,16 @@ public class PlayerScript : MonoBehaviour
 
     private Vector2 _movement;
     private Rigidbody2D _rigidbody;
+    private WeaponScript _weapon;
     // Use this for initialization
     void Start ()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    void Awake()
+    {
+        _weapon = GetComponent<WeaponScript>();
     }
 	
 	// Update is called once per frame
@@ -25,12 +31,11 @@ public class PlayerScript : MonoBehaviour
         shoot |= Input.GetButtonDown("Fire2");
 
         if(shoot)
-        {
-            WeaponScript weapon = GetComponent<WeaponScript>();
+        {            
 
-            if(weapon != null)
+            if(_weapon != null)
             {
-                weapon.Attack(false);
+                _weapon.Attack(false);
             }
         }
 

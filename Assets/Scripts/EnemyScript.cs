@@ -4,20 +4,22 @@ using System.Collections;
 public class EnemyScript : MonoBehaviour
 {
 
-    private WeaponScript _weapon = null;
+    private WeaponScript[] _weapons = null;
 	// Use this for initialization
 	void Awake ()
     {
-        _weapon = GetComponent<WeaponScript>();
+        _weapons = GetComponentsInChildren<WeaponScript>();
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if(_weapon != null)
+        if(_weapons != null)
         {
-
-            _weapon.Attack(true);
+            foreach(var weapon in _weapons)
+            {
+                weapon.Attack(true);
+            }            
         }
     }
 }

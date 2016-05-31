@@ -20,10 +20,7 @@ public class MoveScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        _movement = new Vector2(moveHorizontal, moveVertical);
+        _movement = new Vector2(direction.x * speed.x, direction.y * speed.y);
 	}
 
     void FixedUpdate()
